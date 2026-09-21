@@ -1,8 +1,10 @@
 from rich import print
 from rich.traceback import install
+from rich import inspect
 from rich.panel import Panel
 
 import os
+
 
 install()
 class Tv:
@@ -12,7 +14,7 @@ class Tv:
         self.volume = 0
         self.ligado = False
         self.verCanal = '[red]1[/] 2 3 4 5'
-        self.verVolume = '[red]■[/]■■■■'
+        self.verVolume = '■■■■■'
     
     def avancar_canal(self):
         if self.ligado:
@@ -104,4 +106,7 @@ while(True):
     if choice in ('>', '<', '-', '+', '@'):
         c1.botao_apertado(choice)
     elif choice == '0':
+        exit()
+    elif choice == '1':
+        inspect(tv1)
         exit()
