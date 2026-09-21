@@ -13,9 +13,9 @@ class Tv:
         self.canal = 1
         self.volume = 0
         self.ligado = False
-        self.verCanal = '[red]1[/] 2 3 4 5'
-        self.verVolume = '■■■■■'
-    
+        self.verCanal = ''
+        self.verVolume = ''
+
     def avancar_canal(self):
         if self.ligado:
             if self.canal == 5:
