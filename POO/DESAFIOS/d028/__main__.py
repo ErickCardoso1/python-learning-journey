@@ -1,4 +1,4 @@
-from desafios.d028.termostato import *
+from POO.DESAFIOS.d028.termostato import *
 from rich import print
 from rich.traceback import install
 from rich import inspect

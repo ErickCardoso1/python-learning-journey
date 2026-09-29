@@ -1,4 +1,4 @@
-from diario import *
+from POO.DESAFIOS.d029.diario import *
 from rich import print
 from rich.traceback import install
 from rich import inspect

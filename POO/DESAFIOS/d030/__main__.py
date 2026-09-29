@@ -1,4 +1,4 @@
-from hash import *
+from POO.DESAFIOS.d030.hash import *
 from rich import print
 from rich.traceback import install
 from rich import inspect
