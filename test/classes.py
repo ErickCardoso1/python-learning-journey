@@ -1,28 +1,42 @@
 from abc import ABC, abstractmethod
 
-class Funcionario(ABC):
-    def __init__(self, nome, salario):
-         self.nome = nome
-         self._salario = salario
+class Arquivo(ABC):
+    def __init__(self, nome, tamanho, extensao):
+        self.nome = nome
+        self.tamanho = tamanho
+        self.extensao = extensao
 
     @property
-    def salario(self):
-        return self._salario
+    def extensao(self):
+        return self._extensao
+
+    @extensao.setter
+    def extensao(self, valor):
+        formatos = ['pdf', 'docx']
+        valor = valor.lower().strip()
+        if valor not in formatos:
+            raise PermissionError('Valor Inválido')
+        self._extensao = valor
     
-    @salario.setter
-    def salario(self, valor):
-        if valor > self._salario:
-            self._salario = valor
-            print(f'Salário atualizado para: R$ {valor:,.2f}')
-        else:
-            print('Você não pode diminuir o salário de um Funcionário')
+    @property
+    def nome_completo(self):
+        return f'{self.nome}.{self._extensao}'
     
     @abstractmethod
-    def calculaBonus(self):
+    def abrir(self):
         pass
 
-class Gerente(Funcionario):
-    def __init__(self, nome, salario):
-        super().__init__(nome, salario)
-    def calculaBonus(self):
-        ...
+
+class PDF(Arquivo):
+    def __init__(self, nome:str, tamanho:int):
+        super().__init__(nome, tamanho, 'pdf')
+
+    def abrir(self):
+        print(f"Abrindo o arquivo '{self.nome_completo}'({self.tamanho/1_000_000:.2f}MB) no Adobe Reader")
+
+class DOC(Arquivo):
+    def __init__(self, nome:str, tamanho:int):
+        super().__init__(nome, tamanho, 'docx')
+
+    def abrir(self):
+        print(f"Abrindo o arquivo '{self.nome_completo}'({self.tamanho/1_000_000:.2f}MB) no Microsoft Word")
